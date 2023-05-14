@@ -1,15 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import  HelloWorld  from './components/HelloWorld'
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import HelloWorld from './components/HelloWorld';
+import MainContador from './components/MainContador';
 import './App.css'
 
-function App() {
+export default function App() {
   return (
-    <div>
-      <HelloWorld></HelloWorld>
-    </div>
-  )
-}
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">HelloWolrd</Link>
+            </li>
+            <li>
+              <Link to="/contador">Contador</Link>
+            </li>
+          </ul>
+        </nav>
 
-export default App
+        <Routes>
+          <Route path="/" element={<HelloWorld/>} />
+          <Route path="/contador" element={<MainContador/>} />
+        </Routes>
+      </div>
+    </Router>
+  );
+}
